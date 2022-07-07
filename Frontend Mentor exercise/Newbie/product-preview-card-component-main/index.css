@@ -63,10 +63,6 @@ h1{
     font-weight: var(--fw-secondary);
     color: var(--clr-neutral-700);
 }
-h4:not(del){
-    color: var(--clr-primary-500);
-}
-
 .container{
     position: relative;
     max-width: 370px;
