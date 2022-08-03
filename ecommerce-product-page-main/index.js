@@ -5,8 +5,8 @@ const addItem = document.querySelector('.addCart')
 const activeProduct = document.querySelector('.activeImg')
 const thumbnail = document.querySelectorAll('.thumbnail')
 let cartCounter = document.querySelector('[cart-item]')
-let itemCount = 0;
 
+let itemCount = 0;
     counterAction.forEach( count =>{
         count.addEventListener('click', () =>{
            if(count.getAttributeNode('data-counter').value === 'increment'){
@@ -45,54 +45,68 @@ thumbnail.forEach( image => {
     })
 })
 
-
-
 let arrayAttr = []
-thumbnail.forEach( image =>{
-    arrayAttr.push($(image).children().attr('src'))
+
+//insert all the src 
+thumbnail.forEach( imageContainer =>{
+    arrayAttr.push($(imageContainer).children().attr('src'))
 })
 console.log(arrayAttr);
 
+let currentImg = 0
+
 const action = document.querySelectorAll('[data-action]');
 
-let currentImg = 0
-action.forEach(action =>{
-    action.addEventListener('click', ()=>{
-        if(action.getAttributeNode('data-action').value === 'next'){
-            //increment of itemCount
-            currentImg += 1
-            $(activeProduct).attr('src',arrayAttr[currentImg])
-            
-            if(currentImg >= 4){
-                currentImg = 0
-                $(activeProduct).attr('src',arrayAttr[currentImg])
-            }
-           }else{
-            //decrement of itemCount 
-            currentImg -= 1
-            $(activeProduct).attr('src',arrayAttr[currentImg])
-            
-            if(currentImg <= 0){
-                currentImg = 4
-                $(activeProduct).attr('src',arrayAttr[currentImg])
-                // console.log( arrayAttr[currentImg]);
-            }
-           
-        }
-        
-    })
-    
-})
+//create function with a parameter of num that the value will pass the variable currentImg
+reverse = (reverseNum) => currentImg = reverseNum;
+//create a function that will increase currentImg by 1
+//create a condition that will excute reverse function 
+//create the currentImg value as the index of variable arrayAttr 
+function next(){
+    currentImg += 1
+    currentImg >= 4 ? reverse(0) : ""
+    $(activeProduct).attr('src',arrayAttr[currentImg])
+}
 
-$('.hamburger').click(function(){
-    $('.overlay').css("display","block")
-    $('ul').animate({
-        width: "toggle"
-    }).css('display','block')
+//create a function that will decrease currentImg by 1
+//create a condition that will excute reverse function 
+//create the currentImg value as the index of variable arrayAttr 
+function prev(){
+    currentImg -= 1
+    currentImg < 0 ? reverse(3) : ""
+    $(activeProduct).attr('src',arrayAttr[currentImg])
+}
+
+action.forEach(action =>{
+    action.addEventListener('click', () =>{
+        action.getAttributeNode('data-action').value === 'next' ? next() : prev()
+        console.log(currentImg);
+    })
 })
-$('.close').click(function(){
-    $('ul').animate({
-        width: "toggle"
-    }, "fast").css('display','flex')
-    $('.overlay').css("display","none")
-})
+// action.forEach(action =>{
+//     action.addEventListener('click', ()=>{
+//         if(action.getAttributeNode('data-action').value === 'next'){
+//             //increment of itemCount
+//             currentImg += 1
+//             $(activeProduct).attr('src',arrayAttr[currentImg])
+            
+//             if(currentImg >= 4){
+//                 currentImg = 0
+//                 $(activeProduct).attr('src',arrayAttr[currentImg])
+//             }
+//            }else{
+//             //decrement of itemCount 
+//             currentImg -= 1
+//             $(activeProduct).attr('src',arrayAttr[currentImg])
+            
+//             if(currentImg <= 0){
+//                 currentImg = 4
+//                 $(activeProduct).attr('src',arrayAttr[currentImg])
+//                 // console.log( arrayAttr[currentImg]);
+//             }
+           
+//         }
+        
+//     })
+    
+// })
