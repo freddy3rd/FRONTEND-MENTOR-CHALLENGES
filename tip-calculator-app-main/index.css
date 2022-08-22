@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+:root{
+    --clr-primary: hsl(172, 67%, 45%);
+
+    --clr-neutral-100: hsl(0, 0%, 100%);
+    --clr-neutral-200: hsl(189, 41%, 97%);
+    --clr-neutral-300: hsl(185, 41%, 84%);
+    --clr-neutral-400: hsl(184, 14%, 56%);
+    --clr-neutral-500: hsl(186, 14%, 43%);
+    --clr-neutral-600: hsl(183, 100%, 15%);
+    
+    --fs-text: 1rem;
+    --fs-number: 28px;
+    --fs-total: clamp(1.2rem, 2vw + 1rem , 2rem)
+}
+
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+h1,
+span,
+button
+{
+    font:inherit;
+}
+body{
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: var(--fs-text);
+    background: var(--clr-neutral-300);
+}
+
+input{
+    font-family: 'Space Mono', monospace;
+    padding: 5px 10px;
+    width: 100%;
+    text-align: right;
+    outline: none;
+    font-size: var(--fs-number);
+    border-style: none;
+    background: var(--clr-neutral-200);
+    max-width: 100%;
+    color: var(--clr-neutral-600);
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+  }
+input:focus{
+   outline:2px solid var(--clr-primary);
+   border: none;
+   
+}
+input[error]:focus{
+    border: none;
+}
+input[error]{
+    border:2px solid red;
+}
+button{
+    border-style: none;
+    cursor: pointer;
+    padding: 10px;
+}
+span{
+    color:var(--clr-neutral-400);
+
+}
+
+.container{
+    margin-inline: auto ;
+    padding: 2em;
+    max-width: 80rem;
+    min-height: 100vh;
+}
+
+.wrapper{
+    position: relative;
+    padding: 20px;
+    border-radius: 20px;
+    background: var(--clr-neutral-100);
+    margin: 5em auto;
+    max-width: 400px;
+}
+.wrapper > *{
+    margin: 10px 0;
+}
+
+.total_container,
+button{
+    background: var(--clr-neutral-600);
+    border-radius: 5px;
+    color: var(--clr-neutral-100);
+ 
+}
+.bill,
+.personCount{
+    position: relative;
+    
+    margin: 0;
+    padding: 0;
+}
+.icon{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    font-size: 1.5rem;
+
+    
+}
+/* --------------------------- */
+/* UTILITY STYLE                */
+/* --------------------------- */
+
+.d-grid{
+    display: grid;
+    gap: 10px;
+}
+.d-flex{
+    display: flex;
+    gap: 10px;
+}
+.space-between
+{
+    justify-content: space-between;
+}
+
+/* --------------------------- */
+/* MAIN STYLE                  */
+/* --------------------------- */
+
+.tip_container{
+    position: relative;
+    grid-template-columns: repeat(2,minmax(100px,500px));
+    max-width: 1200px;
+    place-content: center;
+    margin: 10px 0;
+}
+.tip_container span{
+    grid-column: 2 span;
+}
+.tip_container input{
+    margin: 0;
+    padding-inline: 10px;
+    font-size: 1.2rem;
+}
+.tip_container button{
+    width: 100%;
+    position: relative;
+}
+.tip_container button:hover{
+    background: var(--clr-neutral-300);
+    color: var(--clr-neutral-600);
+}
+.tip_container button[data-active = "true"]{
+    background: var(--clr-neutral-300);
+    color: var(--clr-neutral-600);
+}
+.total_container{
+    padding: 20px 2rem;
+   
+}
+.total_wrapper > *{
+    margin: 20px 0;
+}
+.total_container > *{
+    margin: 10px 0;
+}
+label{
+    font-size: 12px;
+    font-weight:lighter;
+}
+#reset{
+    background: var(--clr-primary);
+    width: 100%;
+    text-transform: uppercase;
+}
+#reset:hover{
+    background: var(--clr-neutral-300);
+    color: var(--clr-neutral-600);
+
+}
+output{color: var(--clr-primary);font-size: var(--fs-total);}
+#error{
+    color: red;
+}
+@media only screen and (min-width: 800px) {
+    .wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 20px;
+        max-width: 800px
+    }
+    .tip_container span{
+        grid-column: 3 span;
+    }
+    .tip_container{
+        grid-template-columns: repeat(3,1fr);
+    }
+    .total_container{
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
