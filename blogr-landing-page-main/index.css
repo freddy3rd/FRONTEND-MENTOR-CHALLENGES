@@ -1,0 +1,400 @@
+:root{
+
+    --clr-primary-300:hsl(355, 100%, 74%);
+    --clr-primary-350:hsl(356, 100%, 66%);
+    --clr-primary-400:hsl(208, 49%, 24%);
+
+    --clr-Neutral-100:hsl(0, 0%, 100%); /*TEXT*/
+    --clr-Neutral-200:hsl(240, 7%, 94%); /*FOOTER TEXT*/
+    --clr-Neutral-250:hsl(207, 13%, 34%); /*BODY COPY*/
+    --clr-Neutral-450:hsl(240, 10%, 16%); /*FOOTER BACKGROUND COPY*/
+
+
+    --clr-Bg-Gradient-300:hsl(13, 100%, 72%); /*INTRO/CTA BACKGROUND COPY*/
+    --clr-Bg-Gradient-350:hsl(353, 100%, 62%); /*INTRO/CTA BACKGROUND COPY*/
+    --clr-Bg-Gradient-550:hsl(237, 23%, 32%); /*BODY BACKGROUND COPY*/
+    --clr-Bg-Gradient-600:hsl(237, 17%, 21%); /*BODY BACKGROUND COPY*/
+   
+    --fs-default: 1rem;
+    --fs-header: 1.5rem;
+
+    --ff-primary:'Overpass', sans-serif;
+    --ff-secondary:'Ubuntu', sans-serif;
+
+    --fw-regular:300;
+    --fw-semi-bold:400;
+    --fw-bold:500;
+    --fw-bolder:700;
+
+    --clr-header: var(--clr-primary-400);
+    --clr-paragraph: var(--clr-Neutral-250);
+    --clr-text-btn1: var(--clr-primary-350);
+
+    --clr-text-white: var(--clr-Neutral-100);
+    --clr-bg-btn1: var(--clr-Neutral-100);
+    --clr-bg-nav: var(--clr-Neutral-100);
+    --clr-text-nav: var(--clr-Neutral-250);
+
+}
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* *,html{
+    border:1px solid lime;
+} */
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    margin: 0; 
+}
+
+/* set up the body */
+body {
+    position: relative;
+    line-height: 1.5;
+    min-height: 100vh;
+    font-size: var(--fs-default);
+}
+
+/* make images easier to work with */
+img{
+    max-width: 100%;
+    display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ------------------- */
+/* Utility classes     */
+/* ------------------- */
+
+.flex {
+    display: flex;
+    gap: var(--gap, 1rem);
+}
+
+.grid {
+    display: grid;
+    gap: var(--gap, 1rem);
+}
+
+section{
+    width: 100%;
+    text-align: center;
+    margin-inline: auto;
+    max-width: 80rem;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
+
+.sectionOne,.sectionThree{
+    max-width: 100%;
+}
+article{
+    padding: 1.5rem;
+}
+header{
+    font-size:var(--fs-header);
+    font-weight: var(--fw-bolder);
+    color:var(--clr-header);
+    font-family: var(--ff-primary);
+    margin: 40px 0;
+    padding: 0 1.5rem;
+}
+
+p{
+    color: var(--clr-paragraph);
+    font-size: var(--fs-default);
+    font-family: var(--ff-primary);
+    line-height: 1.6;
+}
+button{
+    border-radius: 100px;
+    border-style: none;
+    background: transparent;
+    font-family: var(--ff-secondary);
+    font-size: var(--fs-default);
+    font-weight: var(--fw-bold);
+    margin: 6px 20px;
+    color: var(--clr-Bg-Gradient-550);
+}
+.logo
+,.hamburger
+,button{
+    cursor: pointer;
+}
+
+.imgContainer{
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+
+/* .imgContainer img{
+    width: 100%;
+    height: auto;
+} */
+.imgContainer.mobile{
+    position: relative;
+    transform: translateY(40%);
+    z-index: 1;
+}
+
+.sectionThree article > *{
+    /* margin: 0; */
+    color: var(--clr-Neutral-100);
+}
+.sectionThree{
+    position: relative;
+    background: var(--clr-Bg-Gradient-600);
+    border-radius:  0  120px 0 120px;
+    padding: 15em 0 5em 0;
+    overflow: hidden;
+}
+ .bg-pattern{
+   position:absolute;
+    border:1px solid lime;
+}
+
+.sectionThree article{
+    padding: 0 2.5em;
+}
+.sectionThree article header{
+    font-size: 2rem;
+}
+/* ------------------- */
+/* NAV POP-UP          */
+/* ------------------- */
+
+nav{
+    position: absolute;
+    /* grid-template-columns: 1fr auto; */
+    padding: 1.5em;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 100%;
+    margin: 1.5em auto;
+}
+.listContainer{
+    /* display: grid; */
+    display: none;
+    place-items: center;
+    position: absolute;
+    padding: 0 2em;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 100%;
+    text-align: center;
+    z-index: 99;
+}
+.listContainer .nav-container{
+    display: grid;
+    /* place-items: center; */
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    background: var(--clr-Neutral-100);
+    box-shadow: 0 10px 5px 0 rgba(0,0,0,.4);
+}
+.listContainer .nav-container hr{
+    margin: 20px 0;
+    border: 1px solid var(--clr-Neutral-200);
+}
+.listContainer .nav-container button{
+    padding: 10px 30px;
+    border-radius: 100px;
+}
+.nav-container button.nav-btn{
+    background: var(--clr-Bg-Gradient-350);
+    color:var(--clr-text-white);
+    font-weight: var(--fw-bolder);
+}
+.listContainer .nav-container header{
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    font-size: 18px;
+    font-family: var(--ff-secondary);
+    font-weight: var(--fw-bold);
+    cursor: pointer;
+}
+.nav-container header img{
+    position: absolute;
+    height: 8px;
+    margin-inline: 10px;
+}
+
+.listContainer .nav-container .nav-item {
+    border-radius: 5px;
+    background:var(--clr-Neutral-200) ;
+}
+.listContainer .nav-container .nav-item > *{
+    display: block;
+    position: relative;
+    text-decoration: none;
+    font-family: var(--ff-secondary);
+    color: var(--clr-text-nav);
+    font-weight: var(--fw-bold);
+}
+.listContainer .nav-container .nav-item a{
+    padding: 10px 0;
+}
+.listContainer .nav-container .nav-item a:hover{
+    color: var(--clr-primary-300);
+}
+
+/* ------------------- */
+/* SECTION STYLE     */
+/* ------------------- */
+
+.sectionOne{
+    /* position: relative; */
+    display: grid;
+    place-items: center;
+    background: var(--clr-primary-350);
+    color: var(--clr-Neutral-100);
+    text-align: center;
+    font-family: var(--ff-primary);
+    overflow: hidden;
+    border-bottom-left-radius: 100px;
+}
+.sectionOne hgroup{
+    font-size: 1.4em;
+    margin: 10em auto 5em auto;
+}
+.sectionOne h4{
+    font-weight: var(--fw-regular);
+    padding:10px;
+    font-size: var(--fs-default);
+}
+
+.sectionOne button{
+    border: 1px solid var(--clr-Neutral-100);
+    color: var(--clr-text-white);
+    padding: 10px 20px;
+    margin: 3em 5px;   
+}
+
+.sectionOne .btn-1{
+    background: var(--clr-bg-btn1);
+    color: var(--clr-text-btn1);
+}
+
+
+/* ------------------- */
+/* FOOTER              */
+/* ------------------- */
+
+footer{
+    background: var(--clr-Neutral-450);
+    place-items: center;
+    text-align: center;
+    padding: 4em 0;
+    border-top-right-radius: 100px;
+}
+
+footer .ft-item{
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+ 
+}
+footer .ft-item > *{
+    position: relative;
+    width: 100%;
+
+}
+
+footer a, footer header{
+    color: var(--clr-Neutral-200);
+    font-family: var(--ff-primary);
+}
+footer header{
+    font-size: 1.187rem;
+    margin: 20px 0;
+}
+footer a{
+    position: relative;
+    display: block;
+    margin:10px 0;
+    text-decoration: none;
+}
+.desktop{
+    display: none;
+}
+
+@media screen and (min-width:800px) {
+    .grid{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* .desktop{
+        display: flex;
+        z-index: 2;
+    }
+    .mobile{
+        display: none;
+    }
+     */
+     footer{
+        justify-self: start;
+        grid-template-columns: auto 1fr;
+     }
+     footer .ft-item{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+     }
+}
